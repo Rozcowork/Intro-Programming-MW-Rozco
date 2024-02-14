@@ -123,6 +123,41 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &140079324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 140079325}
+  m_Layer: 0
+  m_Name: Walls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &140079325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140079324}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.7924812, y: -1.64076, z: 0.03517055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1353549300}
+  - {fileID: 380722760}
+  - {fileID: 1341805023}
+  - {fileID: 1029817323}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &380722758
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,13 +235,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380722758}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 6.15, z: 0}
-  m_LocalScale: {x: 18.54676, y: 2.2566402, z: 2.8208}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.852481, y: 7.79076, z: -0.03517055}
+  m_LocalScale: {x: 18.546762, y: 2.2566402, z: 2.8208}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 140079325}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &380722761
 BoxCollider2D:
@@ -287,7 +322,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.0310493
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -396,12 +431,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029817321}
   m_LocalRotation: {x: -0, y: -0, z: -0.7070315, w: 0.7071821}
-  m_LocalPosition: {x: -9.54, y: -0.83, z: 0}
-  m_LocalScale: {x: 18.54676, y: 2.2566402, z: 2.8208}
+  m_LocalPosition: {x: -11.88, y: 0.86, z: -0.03517055}
+  m_LocalScale: {x: 18.546762, y: 2.25664, z: 2.8208}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 140079325}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.988}
 --- !u!61 &1029817324
 BoxCollider2D:
@@ -507,12 +542,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341805021}
   m_LocalRotation: {x: -0, y: -0, z: -0.7070315, w: 0.7071821}
-  m_LocalPosition: {x: 9.58, y: -0.67, z: 0}
-  m_LocalScale: {x: 18.54676, y: 2.2566402, z: 2.8208}
+  m_LocalPosition: {x: 8.29, y: 0.92, z: -0.03517055}
+  m_LocalScale: {x: 18.546762, y: 2.25664, z: 2.8208}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 140079325}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.988}
 --- !u!61 &1341805024
 BoxCollider2D:
@@ -617,13 +652,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353549298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.17, y: -6.14, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.01, y: -4.54, z: -0.03517055}
   m_LocalScale: {x: 18.54676, y: 2.2566402, z: 2.8208}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 140079325}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1353549301
 BoxCollider2D:
@@ -685,6 +720,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rbBall: {fileID: 1948319114}
   force: 200
+  inPlay: 0
+  ballStartPos: {x: 0, y: 0, z: 0}
 --- !u!212 &1948319112
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -768,7 +805,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 75787d0d8cdf1784296e3362e6574cec, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

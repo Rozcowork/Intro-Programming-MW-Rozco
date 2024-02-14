@@ -13,24 +13,43 @@ public class BallController : MonoBehaviour
     private float xDir;
     private float yDir;
 
+    public bool inPlay;
+    public Vector3 ballStartPos;
+
     // Start is called before the first frame update
     void Start()
+    {
+        Launch();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (inPlay == false)
+        {
+            transform.position = ballStartPos;
+            Launch();
+        }
+    }
+
+    void Launch()
     {
         //Debug.Log("hello world");
 
         Vector3 direction = new Vector3(0, 0, 0);
 
         xDir = Random.Range(0, 2);
-      //Debug.Log("xDir = " + xDir);
-      if (xDir == 0)
+        //Debug.Log("xDir = " + xDir);
+        if (xDir == 0)
         {
             direction.x = -1;
-        } else if (xDir == 1)
+        }
+        else if (xDir == 1)
         {
             direction.x = 1;
         }
         //add force to start movement
-        rbBall.AddForce(direction * force);
 
         yDir = Random.Range(0, 2);
         //Debug.Log("yDir = " + yDir);
@@ -44,13 +63,19 @@ public class BallController : MonoBehaviour
         }
         //add force to start movement
         rbBall.AddForce(direction * force);
-
-
+        inPlay = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    //EVENTS UPON COLLISION
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+       //Debug.Log("object that collided w/ Ball: " + collision.gameObject.name);
+       if (collision.gameObject.name == "Left Wall" || collision.gameObject.name == "Right Wall" )
+        {
+            //Debug.Log("collided with Left/Right Wall");
+            rbBall.velocity = Vector3.zero;
+            inPlay= false;
+        }
     }
 }
+
