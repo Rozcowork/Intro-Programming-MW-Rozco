@@ -6,76 +6,77 @@ using System.Linq;
 public class Snake : MonoBehaviour
 {
     //GLOBAL VARIABLES
-    Vector3 dir = Vector3.right;
+    public Vector3 dir = Vector3.right; //Snake will move right on start
 
     //Keep Track of Tail Elements
-    List<Transform> tail = new List<Transform>();
-    bool ate = false;
-    public GameObject tailPrefab;
+    List<Transform> tail = new List<Transform>(); //Holding the List of the Tail Prefab
+    bool ate = false; //Check to see if you ate food or not 
+    public GameObject tailPrefab; //Grab the Tail Prefab script to add to it
+    public GameManager myManager; //Grab the Game Manager script to control FoodScore UI
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("MoveSnake", 0.1f, 0.1f);
+        InvokeRepeating("MoveSnake", 0.1f, 0.1f); //After 0.1 second snake will move
     }
 
     // Update is called once per frame
     void Update()
     {
-       ChangeDirection();
+       ChangeDirection(); //Grab directional change code
     }
 
-    void MoveSnake()
+    void MoveSnake() //Move snake and reorders snake body list
     {
-        Vector3 gap = transform.position;
-        transform.Translate(dir);
+        Vector3 gap = transform.position; //Get Current Position
+        transform.Translate(dir); //Move the Snake head
 
-        if (ate)
+        if (ate) //Ate food and need to increase snake length
         {
-            Debug.Log("Ate =" + ate);
 
-            GameObject tailSec = (GameObject)Instantiate(tailPrefab, gap, Quaternion.identity);
-            tail.Insert(0, tailSec.transform);
-            ate = false;
+            GameObject tailSec = (GameObject)Instantiate(tailPrefab, gap, Quaternion.identity); //Spawn snake body at the current position
+            tail.Insert(0, tailSec.transform); //Add new body prefab to the list
+            ate = false; //Set the boolean to false
         }
 
 
-        if (tail.Count > 0)
+        else if (tail.Count > 0) //If the list is not empty
         {
-            tail.Last().position = gap;
-            tail.Insert(0, tail.Last());
-            tail.RemoveAt(tail.Count - 1);
+            tail.Last().position = gap; //Get the last transform of the snake body and set it to the current position
+            tail.Insert(0, tail.Last()); //Add the last snake body to the gap at the front of the list
+            tail.RemoveAt(tail.Count - 1); //Remove the extra snake body
+        }
+    }
+    //Change Direction
+    private void ChangeDirection() 
+    {
+        if (Input.GetKey(KeyCode.LeftArrow)) //Pressing the Left Arrow key
+        {
+            dir = Vector3.left; //Snake moves left
+        }
+        else if (Input.GetKey(KeyCode.RightArrow)) //Pressing the Right Arrow key
+        {
+            dir = Vector3.right; //Snake moves right
+        }
+        else if (Input.GetKey(KeyCode.UpArrow)) //Pressing the Up Arrow key
+        {
+            dir = Vector3.up; //Snake moves up
+        }
+        else if (Input.GetKey(KeyCode.DownArrow)) //Presing the Down Arrow key
+        {
+            dir = Vector3.down; //Snake moves down
         }
     }
 
-    private void ChangeDirection()
+    private void OnTriggerEnter2D(Collider2D collision) //On the trigger of the snake food gets eaten
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (collision.gameObject.tag == "Food") //when the food gets eaten
         {
-            dir = Vector3.left;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            dir = Vector3.right;
-        }
-        else if (Input.GetKey(KeyCode.UpArrow))
-        {
-            dir = Vector3.up;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            dir = Vector3.down;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Food")
-        {
-            ate = true;
+            ate = true; //set boolean to true after food is eaten
 
             //Debug.Log("food eaten");
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject); //when food is eaten by Snake it gets destroyed
+            myManager.FoodEaten(); //Grab game manager food score UI to make UI score go up
         }
     }
 }

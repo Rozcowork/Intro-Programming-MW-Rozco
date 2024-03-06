@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class FoodSpawn : MonoBehaviour
 {
-    //MW CCNY
 
     //GLOBAL VARIABLES
-    public GameObject foodPrefab;
+    public GameObject foodPrefab; //
 
     //Border Positions
-    public Transform wallTop;
-    public Transform wallBottom;
-    public Transform wallLeft;
-    public Transform wallRight;
+    public Transform wallTop; //
+    public Transform wallBottom; //
+    public Transform wallLeft; //
+    public Transform wallRight; //
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +31,9 @@ public class FoodSpawn : MonoBehaviour
     {
         //Debug.Log("Spawn Called");
 
-        int xPos = (int)Random.Range(wallLeft.position.x, wallRight.position.x);
-        int yPos = (int)Random.Range(wallTop.position.y, wallBottom.position.y);
+        int xPos = (int)Random.Range(wallLeft.position.x, wallRight.position.x); //
+        int yPos = (int)Random.Range(wallTop.position.y, wallBottom.position.y); //
 
-        Instantiate(foodPrefab, new Vector3(xPos, yPos, 0), Quaternion.identity);
+        Instantiate(foodPrefab, new Vector3(xPos, yPos, 0), Quaternion.identity); //
     }
 }
