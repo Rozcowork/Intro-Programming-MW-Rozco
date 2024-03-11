@@ -334,8 +334,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999848428}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -16.5824, y: -0.128533, z: 0}
+  m_LocalScale: {x: 1.6527166, y: 1.2852974, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1686023989}
@@ -509,8 +509,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538574989}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 51, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.02, z: 1}
+  m_LocalPosition: {x: 68.5342, y: -0.128533, z: 0}
+  m_LocalScale: {x: 1.6527166, y: 1.3110032, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1686023989}
@@ -664,7 +664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -140, y: 196}
+  m_AnchoredPosition: {x: -278, y: 199}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1732740192
@@ -790,8 +790,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765579212}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071253, w: 0.7070883}
-  m_LocalPosition: {x: 25, y: -0.498, z: 0.3}
-  m_LocalScale: {x: 0.030169688, y: 52, z: 0.9910272}
+  m_LocalPosition: {x: 25.5627, y: -0.768611, z: 0.3}
+  m_LocalScale: {x: 0.03877704, y: 85.94318, z: 0.9910272}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1686023989}
@@ -901,8 +901,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016058576}
   m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 25, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.030438766, y: 52.224247, z: 1}
+  m_LocalPosition: {x: 25.5627, y: 0.514116, z: 0}
+  m_LocalScale: {x: 0.039122887, y: 86.31379, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1686023989}
