@@ -22,15 +22,15 @@ public class SceneChanger : MonoBehaviour
     {
        if (sceneNumber == 0) //we are in the start scene
         {
-            StartSceneControls();
+            StartSceneControls(); //call start scene controls
         }
        else if (sceneNumber == 1) //we are in the main scene
         {
-            MainSceneControls();
+            MainSceneControls(); //call main scene controls
         }
-       else if (sceneNumber == 2)
+       else if (sceneNumber == 2) //we are in the End scene
         {
-            EndSceneControls();
+            EndSceneControls(); //call end scene controls
         }
     }
     public void StartSceneControls()
@@ -53,5 +53,9 @@ public class SceneChanger : MonoBehaviour
         {
             SceneManager.LoadScene("StartScene");
         }
+    }
+    public void MoveToScene(int sceneID)
+    {
+        SceneManager.LoadScene(sceneID);
     }
 }
