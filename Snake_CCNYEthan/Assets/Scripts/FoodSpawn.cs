@@ -18,8 +18,8 @@ public class FoodSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Invoke("Spawn", 4);
-        InvokeRepeating("Spawn", 3, 4);
+        InvokeRepeating("Spawn", 3, 4); // Make the first food spawn at 3 seconds and every 4 seconds after
+        InvokeRepeating("RottenFoodSpawn", 5, 10); // Make the first rotten food spawn at 5 seconds and ever 10 seconds after
     }
 
     // Update is called once per frame
@@ -39,9 +39,9 @@ public class FoodSpawn : MonoBehaviour
     }
     void RottenFoodSpawn()// spawn rotten food randomly
     {
-        int xPos = (int)Random.Range(wallLeft.position.x, wallRight.position.x);
-        int yPos = (int)Random.Range(wallTop.position.y, wallBottom.position.y);
+        int xPos = (int)Random.Range(wallLeft.position.x, wallRight.position.x); //Find a random position between the Left and right walls to spawn rotten food
+        int yPos = (int)Random.Range(wallTop.position.y, wallBottom.position.y); //Find a random position between the Top and bottom walls to spawn rotten food
 
-        Instantiate(rottenfoodPrefab, new Vector3(xPos, yPos, 0), Quaternion.identity);
+        Instantiate(rottenfoodPrefab, new Vector3(xPos, yPos, 0), Quaternion.identity); //Spawn rotten food in previously found position
     }
 }

@@ -12,7 +12,9 @@ public class Snake : MonoBehaviour
     List<Transform> tail = new List<Transform>(); //Holding the List of the Tail Prefab
     bool ate = false; //Check to see if you ate food or not 
     public GameObject tailPrefab; //Grab the Tail Prefab script to add to it
+    public SceneChanger mySceneChanger; //Grab the SceneChanger Script to control the scene
     public GameManager myManager; //Grab the Game Manager script to control FoodScore UI
+
 
     // Start is called before the first frame update
     void Start()
@@ -70,13 +72,17 @@ public class Snake : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) //On the trigger of the snake food gets eaten
     {
-        if (collision.gameObject.tag == "Food") //when the food gets eaten
+        if (collision.gameObject.tag == "Food") //when you collide with food it gets eaten
         {
             ate = true; //set boolean to true after food is eaten
 
             //Debug.Log("food eaten");
             Destroy(collision.gameObject); //when food is eaten by Snake it gets destroyed
             myManager.FoodEaten(); //Grab game manager food score UI to make UI score go up
+        }
+        else if (collision.gameObject.tag == "Wall") // 
+        {
+            mySceneChanger.MoveToScene(2); //
         }
     }
 }
