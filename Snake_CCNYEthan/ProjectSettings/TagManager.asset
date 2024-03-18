@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Food
   - Wall
+  - Rotten Food
+  - Tail Prefab
+  - tailSec
   layers:
   - Default
   - TransparentFX

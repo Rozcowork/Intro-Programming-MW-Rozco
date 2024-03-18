@@ -11,6 +11,7 @@ public class Snake : MonoBehaviour
     //Keep Track of Tail Elements
     List<Transform> tail = new List<Transform>(); //Holding the List of the Tail Prefab
     bool ate = false; //Check to see if you ate food or not 
+    bool rottenfood = false; //
     public GameObject tailPrefab; //Grab the Tail Prefab script to add to it
     public SceneChanger mySceneChanger; //Grab the SceneChanger Script to control the scene
     public GameManager myManager; //Grab the Game Manager script to control FoodScore UI
@@ -48,6 +49,13 @@ public class Snake : MonoBehaviour
             tail.Insert(0, tail.Last()); //Add the last snake body to the gap at the front of the list
             tail.RemoveAt(tail.Count - 1); //Remove the extra snake body
         }
+
+        else if (rottenfood)
+        {
+            rottenfood = false;
+            
+            tail.RemoveAt(tail.Count - 1);
+        }
     }
     //Change Direction
     private void ChangeDirection() 
@@ -72,7 +80,7 @@ public class Snake : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) //On the trigger of the snake food gets eaten
     {
-        if (collision.gameObject.tag == "Food") //when you collide with food it gets eaten
+        if (collision.gameObject.tag == "Food") //when snake collides with food it gets eaten
         {
             ate = true; //set boolean to true after food is eaten
 
@@ -80,9 +88,16 @@ public class Snake : MonoBehaviour
             Destroy(collision.gameObject); //when food is eaten by Snake it gets destroyed
             myManager.FoodEaten(); //Grab game manager food score UI to make UI score go up
         }
-        else if (collision.gameObject.tag == "Wall") // 
+        else if (collision.gameObject.tag == "Wall") // when snake collides with wall go to game over scene
         {
-            mySceneChanger.MoveToScene(2); //
+            mySceneChanger.MoveToScene(2); // move to scene 2 when snake collides with wall
+        }
+        else if (collision.gameObject.tag == "Rotten Food")
+        {
+            rottenfood = true; //set bolean to true after rotten food is eaten
+
+            Destroy(collision.gameObject); //when rotten food is eaten by Snake it gets destroyed
+            myManager.RottenFoodEaten(); // Grab game manager food score UI to make the Score go Down
         }
     }
 }

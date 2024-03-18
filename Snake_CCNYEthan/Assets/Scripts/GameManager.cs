@@ -25,4 +25,9 @@ public class GameManager : MonoBehaviour
     {
         foodScore++; //Increase food score to add one to previous number in short hand
     }
+
+    public void RottenFoodEaten() // Update Score
+    {
+        foodScore--; // Decrease food score to subtract one from previous number in short hand
+    }
 }
