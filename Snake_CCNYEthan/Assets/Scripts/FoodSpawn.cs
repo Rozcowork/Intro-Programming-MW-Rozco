@@ -39,8 +39,8 @@ public class FoodSpawn : MonoBehaviour
     }
     void RottenFoodSpawn()// spawn rotten food randomly
     {
-        int xPos = (int)Random.Range(wallLeft.position.x, wallRight.position.x); //Find a random position between the Left and right walls to spawn rotten food
-        int yPos = (int)Random.Range(wallTop.position.y, wallBottom.position.y); //Find a random position between the Top and bottom walls to spawn rotten food
+        int xPos = (int)Random.Range(wallLeft.position.x + 10, wallRight.position.x - 10); //Find a random position between the Left and right walls to spawn rotten food
+        int yPos = (int)Random.Range(wallTop.position.y - 10, wallBottom.position.y + 10); //Find a random position between the Top and bottom walls to spawn rotten food
 
         Instantiate(rottenfoodPrefab, new Vector3(xPos, yPos, 0), Quaternion.identity); //Spawn rotten food in previously found position
     }
