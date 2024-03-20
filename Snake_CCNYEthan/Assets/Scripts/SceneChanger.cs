@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; //using scene library
+using UnityEngine.SceneManagement; //using scene management library
 
 public class SceneChanger : MonoBehaviour
 {

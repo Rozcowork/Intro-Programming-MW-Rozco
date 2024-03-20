@@ -10,8 +10,8 @@ public class Snake : MonoBehaviour
 
     //Keep Track of Tail Elements
     List<Transform> tail = new List<Transform>(); //Holding the List of the Tail Prefab
-    bool ate = false; //Check to see if you ate food or not 
-    bool rottenfood = false; //
+    bool ate = false; //Check to see if you ate food or not false means you have not ate anything 
+    bool rottenfood = false; // Check to see if you ate food or not false means you have not ate anything 
     public GameObject tailPrefab; //Grab the Tail Prefab script to add to it
     public SceneChanger mySceneChanger; //Grab the SceneChanger Script to control the scene
     public GameManager myManager; //Grab the Game Manager script to control FoodScore UI
@@ -50,11 +50,10 @@ public class Snake : MonoBehaviour
             tail.RemoveAt(tail.Count - 1); //Remove the extra snake body
         }
 
-        else if (rottenfood)
+        else if (rottenfood) // Ate Rottenfood and try to make snake size decrease
         {
-            rottenfood = false;
-            
-            tail.RemoveAt(tail.Count - 1);
+            rottenfood = false; // Set the boolean to false
+            tail.RemoveAt(tail.Count - 1); // Try and make snake size decrease but it only effects score
         }
     }
     //Change Direction
@@ -92,12 +91,16 @@ public class Snake : MonoBehaviour
         {
             mySceneChanger.MoveToScene(2); // move to scene 2 when snake collides with wall
         }
-        else if (collision.gameObject.tag == "Rotten Food")
+        else if (collision.gameObject.tag == "Rotten Food") //when snake collides with rotten food it gets eaten
         {
             rottenfood = true; //set bolean to true after rotten food is eaten
 
             Destroy(collision.gameObject); //when rotten food is eaten by Snake it gets destroyed
             myManager.RottenFoodEaten(); // Grab game manager food score UI to make the Score go Down
         }
+        else if (myManager.foodScore == -1) // When game score goes into the negative end the game
+            {
+                mySceneChanger.MoveToScene(2); // move to scene 2 when the score goes negative
+            }
     }
 }
