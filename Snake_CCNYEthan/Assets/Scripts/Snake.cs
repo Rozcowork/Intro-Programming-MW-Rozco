@@ -99,8 +99,8 @@ public class Snake : MonoBehaviour
             myManager.RottenFoodEaten(); // Grab game manager food score UI to make the Score go Down
         }
         else if (myManager.foodScore == -1) // When game score goes into the negative end the game
-            {
+        {
                 mySceneChanger.MoveToScene(2); // move to scene 2 when the score goes negative
-            }
+        }
     }
 }
