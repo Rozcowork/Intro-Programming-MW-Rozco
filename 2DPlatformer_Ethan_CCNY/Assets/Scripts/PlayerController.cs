@@ -7,14 +7,20 @@ public class PlayerController : MonoBehaviour
     //GLOBAL VARIABLES
     public Rigidbody2D playerBody; //Body of the Player
 
-    public float playerSpeed = 0.005f; //speed of the Player
+    public float playerSpeed = 0.008f; //speed of the Player
     public float jumpForce = 400; // force applied to the jump
     public bool isJumping = false; // At start the player is not jumping
+
+    //Player Health
+    public int maxHealth = 20;
+    public int currentHealth;
+    public HealthBar healthbarScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthbarScript.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -57,5 +63,16 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false; //set isJumping Boolean to False to allow player to jump again
         }
+
+        if (collision.gameObject.tag == "Lava")
+        {
+            TakeDamage(2);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthbarScript.SetHealth(currentHealth);
     }
 }
