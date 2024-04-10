@@ -12,22 +12,22 @@ public class PlayerController : MonoBehaviour
     public bool isJumping = false; // At start the player is not jumping
 
     //Player Health
-    public int maxHealth = 20;
+    public int maxHealth = 20; 
     public int currentHealth;
     public HealthBar healthbarScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
-        healthbarScript.SetMaxHealth(maxHealth);
+        currentHealth = maxHealth; //set current health to the Max at the start of the game
+        healthbarScript.SetMaxHealth(maxHealth); //call the HealthBar script to change the UI health
     }
 
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
-        Jump();
+        MovePlayer(); //call MovePlayer constantly
+        Jump(); //call Jump constantly
     }
     
     private void MovePlayer()
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         transform.position = newPos; //close the loop of the if statements to move player
     }
     
-    private void Jump()
+    private void Jump() //
     {
         if (!isJumping && Input.GetKeyDown(KeyCode.Space)) // if isJumping is true and you press "Spacebar" change position
         {
@@ -64,15 +64,15 @@ public class PlayerController : MonoBehaviour
             isJumping = false; //set isJumping Boolean to False to allow player to jump again
         }
 
-        if (collision.gameObject.tag == "Lava")
+        if (collision.gameObject.tag == "Lava") //check if player collides with Lava
         {
-            TakeDamage(2);
+            TakeDamage(2); //make player take 2 damage when colliding with Lava
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage) //if you take damage the number you recieve will effect the health bar
     {
-        currentHealth -= damage;
-        healthbarScript.SetHealth(currentHealth);
+        currentHealth -= damage; //shorthand to subtract the current health from the damage you recieve
+        healthbarScript.SetHealth(currentHealth); //set health to the new current health after taking damage
     }
 }
