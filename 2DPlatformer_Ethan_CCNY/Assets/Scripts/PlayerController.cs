@@ -12,9 +12,13 @@ public class PlayerController : MonoBehaviour
     public bool isJumping = false; // At start the player is not jumping
 
     //Player Health
-    public int maxHealth = 20; 
-    public int currentHealth;
-    public HealthBar healthbarScript;
+    public int maxHealth = 20; //maximum health in a integer
+    public int currentHealth; //current health of your player
+    public HealthBar healthbarScript; //call the health bar script to change the Health bar UI
+
+    //"Flip" direction variables
+    public bool flippedLeft; //keep track of which way our sprite is Currently facing
+    public bool facingLeft; //keeps track of which way our sprite Should be facing
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +34,7 @@ public class PlayerController : MonoBehaviour
         Jump(); //call Jump constantly
     }
     
-    private void MovePlayer()
+    private void MovePlayer() //this private void is to move the player
     {
         Vector3 newPos = transform.position; //Current postition of the player
 
@@ -38,22 +42,26 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("A pressed");
             newPos.x -= playerSpeed; //when "A" is pressed go left 
+            facingLeft = true; //set the boolean to true when facing left
+            Flip(facingLeft); //call the Flip Facing left void
         }
         else if (Input.GetKey(KeyCode.D)) //if you press "D" change position
         {
             //Debug.Log("D pressed");
             newPos.x += playerSpeed; //when "D" is pressed go right
+            facingLeft = false; //set the boolean to false when facing right
+            Flip(facingLeft); //call the Flip Facing left void
         }
 
         transform.position = newPos; //close the loop of the if statements to move player
     }
     
-    private void Jump() //
+    private void Jump() //this private void is for the Player to Jump
     {
         if (!isJumping && Input.GetKeyDown(KeyCode.Space)) // if isJumping is true and you press "Spacebar" change position
         {
             playerBody.AddForce(new Vector3(playerBody.velocity.x, jumpForce, 0)); //Add jump force to the player to change new vertical position
-            isJumping = true;
+            isJumping = true; //change the boolean to true if the player is jumping
         }
     }
 
@@ -74,5 +82,21 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= damage; //shorthand to subtract the current health from the damage you recieve
         healthbarScript.SetHealth(currentHealth); //set health to the new current health after taking damage
+    }
+
+    void Flip(bool facingLeft) //this void flips the character
+    {
+        //Debug.Log("Flip() called. facingRight = " + facingRight);
+        if (facingLeft && !flippedLeft) //if facingLeft is true and the flippedLeft is false rotate the player
+        {
+            transform.Rotate(0, -180, 0); //change the way the player is facing to the left 
+            flippedLeft = true; //set the boolean to true
+        }
+
+        if (flippedLeft && !facingLeft) //if flipped Left is true and the facingLeft is false rotate the player
+        {
+            transform.Rotate(0, 180, 0); //change the way the player is facing to the right
+            flippedLeft = false; //set the booolean to false
+        }
     }
 }
