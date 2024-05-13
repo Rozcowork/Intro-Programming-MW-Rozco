@@ -5,17 +5,29 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     //GLOBAL VARIABLES
-    public Rigidbody2D projectileRb;
+    public Rigidbody2D projectileRb; 
     public float speed = 5;
 
     //PROJECTILE COUNTDOWN TIMER
     public float projectileLife = 2;
     public float projectileCount;
 
+    //flipping launch direction
+    public PlayerController playerControllerScript;
+    public bool facingLeft;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerControllerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         projectileCount = projectileLife;
+        facingLeft = playerControllerScript.facingLeft;
+        //if (!facingRight)
+        //{
+        //    transform.Rotate(0, -180, 0);
+        //    transform.rotation = Quaternion.Euler(0, 180, 0);
+        //    Debug.Log("facingRight = " + facingRight);
+        //}
     }
 
     // Update is called once per frame
@@ -32,7 +44,14 @@ public class Projectile : MonoBehaviour
     
     private void FixedUpdate()
     {
-        projectileRb.velocity = new Vector3(speed, projectileRb.velocity.y, 0);
+        if (facingLeft)
+        {
+            projectileRb.velocity = new Vector3(-speed, projectileRb.velocity.y, 0);
+        }
+        else
+        {
+            projectileRb.velocity = new Vector3(speed, projectileRb.velocity.y, 0);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
