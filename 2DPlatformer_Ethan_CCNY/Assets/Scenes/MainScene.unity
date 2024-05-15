@@ -3392,9 +3392,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1154104326}
   - component: {fileID: 1154104325}
+  - component: {fileID: 1154104327}
   m_Layer: 0
   m_Name: BadCheckpoint
-  m_TagString: Untagged
+  m_TagString: Bad Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3440,6 +3441,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1154104327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154104324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b990be4b8c5ea448f6575d25b1972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossScript: {fileID: 2059936550}
 --- !u!1 &1191134865
 GameObject:
   m_ObjectHideFlags: 0
@@ -5322,7 +5336,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -5435,6 +5449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 100
   playerControllerScript: {fileID: 235431983}
+  bossMoving: 0
   patrolPoints:
   - {fileID: 212695932}
   - {fileID: 1618394998}

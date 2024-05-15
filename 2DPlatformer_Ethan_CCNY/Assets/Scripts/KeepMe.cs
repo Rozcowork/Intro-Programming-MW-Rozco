@@ -5,7 +5,7 @@ using UnityEngine;
 public class KeepMe : MonoBehaviour
 {
     //Global Variable
-    public static GameObject instance;
+    public static GameObject instance;//instance of a game object 
 
     // Start is called before the first frame update
     void Start()
@@ -13,18 +13,18 @@ public class KeepMe : MonoBehaviour
         
     }
 
-    private void Awake()
+    private void Awake() //Called when the scripts are lodaing
     {
-        if (instance == null)
+        if (instance == null) //Instance has not been set
         {
-            Debug.Log("Game Manager not destroyed.");
-            instance = gameObject;
-            DontDestroyOnLoad(gameObject);
+            
+            instance = gameObject; //set the instance to the game object it is attached to
+            DontDestroyOnLoad(gameObject);//Prevent the game Object from being destroyed when loading
         }
-        else
+        else //instance is already set
         {
-            Debug.Log("Duplicate Audio Manager Destroyed");
-            Destroy(gameObject);
+            
+            Destroy(gameObject);//Destroy duplicate instance
         }
     }
 

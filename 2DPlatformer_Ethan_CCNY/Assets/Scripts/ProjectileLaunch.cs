@@ -23,11 +23,11 @@ public class ProjectileLaunch : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && shootCount <= 0) //if you press the Left Mouse Button Down and you have not shot, you can shoot
         {
-            Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity); 
+            Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity); //to launch the prefab at the position of the LaunchPoint
 
-            shootCount = shootTime;
+            shootCount = shootTime; //Make the shot count the same as the shooting time
         }
 
-        shootCount -= Time.deltaTime;
+        shootCount -= Time.deltaTime; //reduce the shoot count timer
     }
 }
