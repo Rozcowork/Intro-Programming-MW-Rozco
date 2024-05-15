@@ -5341,7 +5341,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2059936547
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5449,14 +5449,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 100
   playerControllerScript: {fileID: 235431983}
-  bossMoving: 0
   patrolPoints:
   - {fileID: 212695932}
   - {fileID: 1618394998}
   - {fileID: 447585543}
-  - {fileID: 0}
   moveSpeed: 1
   patrolDestination: 0
+  moveBoss: 0
 --- !u!1 &2071190058
 GameObject:
   m_ObjectHideFlags: 0
