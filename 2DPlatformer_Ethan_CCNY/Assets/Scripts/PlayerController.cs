@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     //GLOBAL VARIABLES
     public Rigidbody2D playerBody; //Body of the Player
 
-    public float playerSpeed = 0.008f; //speed of the Player
+    public float playerSpeed = 0.009f;//speed of the Player
     public float jumpForce = 400; // force applied to the jump
     public bool isJumping = false; // At start the player is not jumping
 
@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 20; //maximum health in a integer
     public int currentHealth; //current health of your player
     public HealthBar healthbarScript; //call the health bar script to change the Health bar UI
+    public SceneChanger scenechangerScript;// call the scenechanger script to change scenes on no health
 
     //"Flip" direction variables
     public bool flippedLeft; //keep track of which way our sprite is Currently facing
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     //play sound effects
     public AudioSource lavaRockAudio;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -75,9 +77,14 @@ public class PlayerController : MonoBehaviour
             isJumping = false; //set isJumping Boolean to False to allow player to jump again
         }
 
+        if (collision.gameObject.tag == "Portal")//if player collides with the portal
+        {
+            scenechangerScript.MoveToScene(3);//change scene to win scene
+        }
+
         if (collision.gameObject.tag == "Lava") //check if player collides with Lava
         {
-            lavaRockAudio.Play();
+            lavaRockAudio.Play();//play audio when colliding
             TakeDamage(2); //make player take 2 damage when colliding with Lava
         }
     }
@@ -86,6 +93,10 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= damage; //shorthand to subtract the current health from the damage you recieve
         healthbarScript.SetHealth(currentHealth); //set health to the new current health after taking damage
+        if (currentHealth < 0)//if the health is lower than 0
+        {
+            scenechangerScript.MoveToScene(2); //change to scene 2 End scene
+        }
     }
 
     void Flip(bool facingLeft) //this void flips the character

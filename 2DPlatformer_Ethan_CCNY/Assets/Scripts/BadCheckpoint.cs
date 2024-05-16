@@ -19,13 +19,13 @@ public class BadCheckpoint : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)// when player hits the bad checkpoint trigger the 
+    public void OnTriggerEnter2D(Collider2D collision)// when player hits the bad checkpoint trigger
     {
-        if(collision.gameObject.tag == "Player")// if Player 
+        if(collision.gameObject.tag == "Player")// if Player connects with bad checkpoint
         {
-            Debug.Log("trigger registered");
-            bossScript.moveBoss = true;
-
+            //Debug.Log("trigger registered");
+            bossScript.moveBoss = true;//set the public bool to true
+            Destroy(gameObject);//destroy bad chackpoint after use
         }
     }
 

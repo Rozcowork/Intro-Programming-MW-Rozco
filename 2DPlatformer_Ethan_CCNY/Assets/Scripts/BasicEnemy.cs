@@ -25,9 +25,9 @@ public class BasicEnemy : MonoBehaviour
         EnemyMovement();//Call the enemy movement script
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)// when the 2 items collided cause an action
+    private void OnCollisionEnter2D(Collision2D collision)// when the the enemy collides
     {
-        if (collision.gameObject.tag == "Player") // if the player collides with enemy do something
+        if (collision.gameObject.tag == "Player") // if the player collides with enemy
         {
             //Debug.Log("enemy hit");
             playerControllerScript.TakeDamage(damage); // if the player collides with the enemy call the take damage script from Player controller script
@@ -36,22 +36,22 @@ public class BasicEnemy : MonoBehaviour
 
     private void EnemyMovement()//Enemy movement to patrol points
     {
-        if (patrolDestination == 0)//if you are patrol destination 0 do something
+        if (patrolDestination == 0)//if you are patrol destination 0
         {
             transform.position = Vector3.MoveTowards(transform.position, patrolPoints[0].position, moveSpeed * Time.deltaTime);// move to patrol point 0
 
-            if (Vector3.Distance(transform.position, patrolPoints[0].position) < 0.5)//if at patrol point 0 do something else
+            if (Vector3.Distance(transform.position, patrolPoints[0].position) < 0.5)//if at patrol point 0 move to
             {
                 patrolDestination = 1;// go to patrol point 1
             }
         }
 
-        else if (patrolDestination == 1)//if you are patrol destination 1 do something
+        else if (patrolDestination == 1)//else if you are patrol destination 1
         {
             //Debug.Log("head to next patrol point");
             transform.position = Vector3.MoveTowards(transform.position, patrolPoints[1].position, moveSpeed * Time.deltaTime);// move to patrol point 1
 
-            if (Vector3.Distance(transform.position, patrolPoints[1].position) < 0.5)// if at patrol point 1 do something else
+            if (Vector3.Distance(transform.position, patrolPoints[1].position) < 0.5)// if at patrol point 1 move to
             {
                 patrolDestination = 0; // go to patrol point 0
             }

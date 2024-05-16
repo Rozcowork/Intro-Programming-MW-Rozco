@@ -54,14 +54,14 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) // when the projectile collides with object do an action
+    private void OnCollisionEnter2D(Collision2D collision) // when the projectile collides with object
     {
-        if (collision.gameObject.tag == "Lava") //if projectile is colliding with the Lava do something
+        if (collision.gameObject.tag == "Lava") //if projectile is colliding with the Lava
         {
             Destroy(collision.gameObject); //When projectile hits Lava the Lava will be destroyed
         }
 
-        else if (collision.gameObject.tag == "Enemy") //if projectile is colliding with the Enemy do something
+        else if (collision.gameObject.tag == "Enemy") //if projectile is colliding with the Enemy
         {
             Destroy(collision.gameObject); //When projectile hits the Enemy the Enemy will be destroyed
         }

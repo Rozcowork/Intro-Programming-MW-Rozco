@@ -11,31 +11,31 @@ public class Boss : MonoBehaviour
     //Enemy Movement
    
     public Transform[] patrolPoints;//List of patrol points
-    public float moveSpeed = 1;// boss movement speed
+    public float moveSpeed = 8.8f;//boss movement speed
     public int patrolDestination;//patrol destination
-    public bool moveBoss = false;
+    public bool moveBoss = false;// bool set to False so boss does not move
     // Start is called before the first frame update
     void Start()
     {
-        damage = 200;//damage the boss does to the player
+        damage = 100;//damage the boss does to the player  
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(moveBoss)
+        if(moveBoss)//if bool is set to true
         {
-            EnemyMovement();
+            EnemyMovement();//call the enemy movement function
         }
     }
         
 
-    private void OnCollisionEnter2D(Collision2D collision) //when the boss collides with something do an action
+    private void OnCollisionEnter2D(Collision2D collision) //when the boss collides with an object
     {
         if (collision.gameObject.tag == "Player") //if the player collides with the Boss
         {
             //Debug.Log("enemy hit");
-            playerControllerScript.TakeDamage(damage); // call the Player controller script and Take damage damage
+            playerControllerScript.TakeDamage(damage); // call the Player controller script and Take damage
         }
 
         else if (collision.gameObject.tag == "Lava")// if Lava collides with the Boss
@@ -57,7 +57,7 @@ public class Boss : MonoBehaviour
     private void EnemyMovement()// Boss movement to patrol Points
     {
         //Debug.Log("EnemyMovement() called"); 
-        if (patrolDestination == 0)//if patrol point 0 do something
+        if (patrolDestination == 0)//if patrol point 0
         {
             //Debug.Log("Destination 0 is working!");
             transform.position = Vector3.MoveTowards(transform.position, patrolPoints[0].position, moveSpeed * Time.deltaTime);//Boss will move to patrol point 0
@@ -68,7 +68,7 @@ public class Boss : MonoBehaviour
             }
         }
 
-        else if (patrolDestination == 1)//if patrol point 1 do something
+        else if (patrolDestination == 1)//if patrol point 1
         {
            // Debug.Log("Destination 1 is working!");
             //Debug.Log("head to next patrol point");
@@ -78,6 +78,12 @@ public class Boss : MonoBehaviour
             {
                 patrolDestination = 2;//Boss will move to patrol point 0
             }
+        }
+
+        else if (patrolDestination == 2)//if at patrol point 2 
+        {
+            transform.position = Vector3.MoveTowards(transform.position, patrolPoints[2].position, moveSpeed * Time.deltaTime);//Boss will stay at patrol point 2
+
         }
     }
 }

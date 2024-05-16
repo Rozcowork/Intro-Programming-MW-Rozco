@@ -17,7 +17,7 @@ public class SceneChanger : MonoBehaviour
         
     }
 
-    public void MoveToScen(int sceneID) //change scenes to match ID
+    public void MoveToScene(int sceneID) //change scenes to match ID
     {
         SceneManager.LoadScene(sceneID); //use the scene manager to load the next scene
     }
